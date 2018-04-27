@@ -200,7 +200,8 @@ sub OUT{
   foreach my $row (@rows){
     #print "THIS IS THE ROW $row\n";
     my ($thisplate,$PPI,$donornum,$tag,$donorname,$acceptornum,$tag2,$acceptorname)=split(/,/,$row);
-    my $mod=$thisplate%6; if ($mod==0){$mod=6} #use with modified line below
+    #my $mod=$thisplate%6; if ($mod==0){$mod=6} #use with modified line below
+    my $mod=$thisplate%4; if ($mod==0){$mod=4} #use with modified line below
     my $dest; $dest="Dest0$mod";#if ($plate<10){$dest="Dest0$thisplate"} else {$dest="Dest$thisplate"}
     my $p1; my $p2;
     if ($repeater eq 'donor'){$p1=$donornum;$p2=$acceptornum} else {$p2=$donornum;$p1=$acceptornum }
