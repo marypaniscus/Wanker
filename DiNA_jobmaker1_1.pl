@@ -153,7 +153,7 @@ sub EA_BATCH_WRITE_GWL{ #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         #if($plate==1){$plate++;}
         unless($plate==0){OUT($plate,$repeater,$plate1to6,$plate1toFour,@rows);@rows = ()} #run OUT unless this is the first plate
         $plate++;
-        $plate1to6++; if ($plate1to6==7){$plate1to6=1} #six positions for destinations per run
+        $plate1to6++;if ($plate1to6==5){$plate1to6=1} #if ($plate1to6==7){$plate1to6=1} #six positions for destinations per run
         $plate1toFour++; if ($plate1toFour==5){$plate1toFour=1} #4 templates for destinations per run
         ($repeater,$lastdonornum, $lastacceptornum)=("unknown", "unknown", "unknown");
     }
