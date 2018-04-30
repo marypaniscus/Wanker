@@ -153,7 +153,7 @@ sub EA_BATCH_WRITE_GWL{ #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         #if($plate==1){$plate++;}
         unless($plate==0){OUT($plate,$repeater,$plate1to6,$plate1toFour,@rows);@rows = ()} #run OUT unless this is the first plate
         $plate++;
-        $plate1to6++; if ($plate1to6==7){$plate1to6=1} #six positions for destinations per run
+        $plate1to6++;if ($plate1to6==5){$plate1to6=1} #if ($plate1to6==7){$plate1to6=1} #six positions for destinations per run
         $plate1toFour++; if ($plate1toFour==5){$plate1toFour=1} #4 templates for destinations per run
         ($repeater,$lastdonornum, $lastacceptornum)=("unknown", "unknown", "unknown");
     }
@@ -200,7 +200,8 @@ sub OUT{
   foreach my $row (@rows){
     #print "THIS IS THE ROW $row\n";
     my ($thisplate,$PPI,$donornum,$tag,$donorname,$acceptornum,$tag2,$acceptorname)=split(/,/,$row);
-    my $mod=$thisplate%6; if ($mod==0){$mod=6} #use with modified line below
+    #my $mod=$thisplate%6; if ($mod==0){$mod=6} #use with modified line below
+    my $mod=$thisplate%4; if ($mod==0){$mod=4} #use with modified line below
     my $dest; $dest="Dest0$mod";#if ($plate<10){$dest="Dest0$thisplate"} else {$dest="Dest$thisplate"}
     my $p1; my $p2;
     if ($repeater eq 'donor'){$p1=$donornum;$p2=$acceptornum} else {$p2=$donornum;$p1=$acceptornum }
